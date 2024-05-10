@@ -23,10 +23,25 @@ and then you can run the Python script.
 To load and manage models it is also possible to use OpenWebUI
 
 ```
-docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+docker run -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main
 ```
 
-## Azuure
+Once the docker container is started, OpenWebUI will be available at
+
+```
+http://localhost:3000/
+```
+
+Otherwise Ollama can be completely managed via API, for example:
+
+```
+curl http://localhost:11434/api/tags | jq .
+```
+
+Documentation is here: https://github.com/ollama/ollama/tree/main/docs
+
+
+## Azure
 
 Ollama can also be deployed in an Azure container:
 
