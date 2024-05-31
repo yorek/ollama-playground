@@ -1,4 +1,5 @@
+.venv/
 ollama/
 dataset_test/
 dataset_train/
-.venv/
+output/
