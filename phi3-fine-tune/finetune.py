@@ -19,6 +19,28 @@ logger = logging.getLogger(__name__)
 # Model checkpoint to fine-tune
 checkpoint_path = "microsoft/Phi-3-mini-4k-instruct"
 
+# Load your dataset from CSV into a pandas DataFrame
+df_test = pd.read_csv("./content/test_sft_sql_l.csv")
+
+# Prepare your dataset
+dataset_test = Dataset.from_pandas(df_test)
+
+# Display information about the dataset
+print("===== TEST SET INFO =====")
+print(df_test.count())
+print(dataset_test.info)
+
+# Load your dataset from CSV into a pandas DataFrame
+df_train = pd.read_csv("./content/train_sft_sql_l_user.csv")
+
+# Prepare your dataset
+dataset_train = Dataset.from_pandas(df_train)
+
+# Display information about the dataset
+print("===== TRAIN SET INFO =====")
+print(df_train.count())
+print(dataset_train.info)
+
 # Model loading arguments
 model_kwargs = dict(
     use_cache=False,
@@ -38,30 +60,6 @@ tokenizer.model_max_length = 2048  # Set maximum sequence length
 tokenizer.pad_token = tokenizer.unk_token  # Use unk as padding token
 tokenizer.pad_token_id = tokenizer.convert_tokens_to_ids(tokenizer.pad_token)
 tokenizer.padding_side = 'right'
-
-# Load your dataset from CSV into a pandas DataFrame
-df_test = pd.read_csv("./content/test_sft_sql_l.csv")
-
-# Prepare your dataset
-dataset_test = Dataset.from_pandas(df_test)
-
-# Display information about the dataset
-print(dataset_test.info)
-
-# Optionally, you can save the dataset to a file
-dataset_test.save_to_disk("dataset_test")
-
-# Load your dataset from CSV into a pandas DataFrame
-df_train = pd.read_csv("./content/train_sft_sql_l_user.csv")
-
-# Prepare your dataset
-dataset_train = Dataset.from_pandas(df_train)
-
-# Display information about the dataset
-print(dataset_train.info)
-
-# Optionally, you can save the dataset to a file
-dataset_train.save_to_disk("dataset_train")
 
 # Training hyperparameters
 training_config = {
