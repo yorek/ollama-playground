@@ -1,4 +1,7 @@
 setuptools
 datasets
 peft
-trl
+trl 
+transformers 
+deepspeed
+accelerate

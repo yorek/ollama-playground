@@ -8,6 +8,8 @@ import transformers
 from trl import SFTTrainer
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, BitsAndBytesConfig
 
+# Downloaded from https://huggingface.co/microsoft/Phi-3-mini-4k-instruct/tree/main
+
 # Logging setup
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -20,7 +22,7 @@ logger = logging.getLogger(__name__)
 checkpoint_path = "microsoft/Phi-3-mini-4k-instruct"
 
 # Load your dataset from CSV into a pandas DataFrame
-df_test = pd.read_csv("./content/test_sft_sql_l.csv")
+df_test = pd.read_csv("./content/test.csv")
 
 # Prepare your dataset
 dataset_test = Dataset.from_pandas(df_test)
@@ -31,7 +33,7 @@ print(df_test.count())
 print(dataset_test.info)
 
 # Load your dataset from CSV into a pandas DataFrame
-df_train = pd.read_csv("./content/train_sft_sql_l_user.csv")
+df_train = pd.read_csv("./content/train.csv")
 
 # Prepare your dataset
 dataset_train = Dataset.from_pandas(df_train)
@@ -135,5 +137,4 @@ trainer.log_metrics("eval", metrics)
 trainer.save_metrics("eval", metrics)
 
 trainer.save_model(train_conf.output_dir)
-
 
