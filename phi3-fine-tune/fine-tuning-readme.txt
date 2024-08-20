@@ -1,9 +1,5 @@
 https://github.com/ollama/ollama
 
----
-
-model.zip
-
 -- 
 https://github.com/ggerganov/llama.cpp/blob/952d03dbead16e4dbdd1d3458486340673cc2465/convert-lora-to-ggml.py#L51
 https://github.com/ggerganov/llama.cpp/blob/ee52225067622babc277371511b8124884e1c797/gguf-py/gguf/constants.py#L187
