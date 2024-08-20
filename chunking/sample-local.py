@@ -5,13 +5,13 @@ from langchain_community.embeddings import OllamaEmbeddings
 load_dotenv()
 
 # make sure Ollama is running
-# > ollama serve
 embeddings = OllamaEmbeddings(
-  model='mxbai-embed-large'
+  model='mxbai-embed-large',
+  show_progress=True
 )
 
 print("Loading text...")
-with open("./state_of_the_union.txt") as f:
+with open("./ai-gov-executive-order.txt") as f:
     state_of_the_union = f.read()
 
 print("Splitting...")

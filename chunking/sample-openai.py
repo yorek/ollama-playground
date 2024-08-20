@@ -7,10 +7,11 @@ load_dotenv()
 embeddings = AzureOpenAIEmbeddings(
     azure_deployment="text-embedding-3-small",
     openai_api_version="2023-05-15",
+    show_progress_bar=True
 )
 
 print("Loading text...")
-with open("./state_of_the_union.txt") as f:
+with open("./ai-gov-executive-order.txt") as f:
     state_of_the_union = f.read()
 
 print("Splitting...")
