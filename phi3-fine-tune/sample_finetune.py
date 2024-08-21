@@ -8,6 +8,8 @@ import transformers
 from trl import SFTTrainer
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, BitsAndBytesConfig
 
+# Downloaded from https://huggingface.co/microsoft/Phi-3-mini-4k-instruct/tree/main
+
 """
 A simple example on using SFTTrainer and Accelerate to finetune Phi-3 models. For
 a more advanced example, please follow HF alignment-handbook/scripts/run_sft.py.

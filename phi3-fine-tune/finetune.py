@@ -4,11 +4,8 @@ import pandas as pd
 from datasets import Dataset
 from peft import LoraConfig
 import torch
-import transformers
 from trl import SFTTrainer
-from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, BitsAndBytesConfig
-
-# Downloaded from https://huggingface.co/microsoft/Phi-3-mini-4k-instruct/tree/main
+from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 
 # Logging setup
 logging.basicConfig(
@@ -138,3 +135,5 @@ trainer.save_metrics("eval", metrics)
 
 trainer.save_model(train_conf.output_dir)
 
+trainer.model.save_pretrained("mymodel")
+trainer.tokenizer.save_pretrained("mymodel")
